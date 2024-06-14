@@ -1,7 +1,5 @@
-// Navbar.js
-
 import React, { useState } from 'react';
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,23 +9,26 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
-      <div className="logo">Travel.</div>
-      <nav className={isOpen ? 'open' : ''}>
+    <header className={styles.navbar}>
+      <div className={styles.logo}>Travel.</div>
+      <nav className={isOpen ? styles.open : ''}>
         <ul>
           <li>Home</li>
           <li>Packages</li>
           <li>About</li>
           <li>Pages</li>
-          <li>News</li>
           <li>Contact</li>
         </ul>
       </nav>
-      <button className="book-now">BOOK NOW</button>
-      <div className="hamburger" onClick={toggleMenu}>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
+      <div>
+        <button className={styles.signUp}>Sign Up</button>
+        <button className={styles.bookNow}>BOOK NOW</button>
+      </div>
+      
+      <div className={styles.hamburger} onClick={toggleMenu}>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
       </div>
     </header>
   );
