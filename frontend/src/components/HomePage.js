@@ -3,6 +3,7 @@ import styles from './HomePage.module.css';
 import SearchBar from './SearchBar';
 import backimg from '../images/background.jpg';
 import PopularDestinations from './PopularDestinations';
+import RecommendedPlaces from './RecommendedPlaces';
 
 const HomePage = () => {
   return (
@@ -23,6 +24,10 @@ const HomePage = () => {
         <div className={styles.searchContainer}>
           <SearchBar />
         </div>
+      </div>
+
+      <div className={styles.popularDestination}>
+        <RecommendedPlaces />
       </div>
 
       <div className={styles.popularDestination}>
