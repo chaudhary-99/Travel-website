@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import styles from './PopularDestinations.module.css';
 import PopularDestinationsCard from './cards/PopularDestinationsCard';
-import bankeBihari from '../images/bankeBihari.jpg'
-import chandraodayaMandir from '../images/chandraodayaMandir.jpg'
-import premMandir from '../images/premMandir.jpg'
-import tajMahal from '../images/tajMahal.jpg'
+import bankeBihari from '../images/bankeBihari.jpg';
+import chandraodayaMandir from '../images/chandraodayaMandir.jpg';
+import premMandir from '../images/premMandir.jpg';
+import tajMahal from '../images/tajMahal.jpg';
 
 const destinations = [
     { id: 1, name: 'Banke Bihari', image: bankeBihari },
@@ -22,14 +22,14 @@ const PopularDestinations = () => {
 
     const scroll = (direction) => {
         if (scrollContainerRef.current) {
-            const { scrollLeft, clientWidth } = scrollContainerRef.current;
+            const { scrollLeft } = scrollContainerRef.current;
             const scrollAmount = 350;
             scrollContainerRef.current.scrollTo({
                 left: scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount),
                 behavior: 'smooth',
             });
         }
-    }
+    };
 
     return (
         <div className={styles.container}>
@@ -49,7 +49,7 @@ const PopularDestinations = () => {
             </div>
 
             <div className={styles.cardsContainer} ref={scrollContainerRef}>
-                <div className={styles.cards} >
+                <div className={styles.cards}>
                     {destinations.map(dest => (
                         <PopularDestinationsCard key={dest.id} destination={dest} />
                     ))}
@@ -57,6 +57,6 @@ const PopularDestinations = () => {
             </div>
         </div>
     );
-}
+};
 
 export default PopularDestinations;

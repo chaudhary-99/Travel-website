@@ -19,6 +19,11 @@
       box-shadow: 0 0 20px #F2640C;
     }
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   
   .navbar {
     font-weight: 600;

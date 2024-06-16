@@ -1,12 +1,10 @@
 // App.js
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-// import SearchBar from './components/SearchBar';
 import HomePage from './components/HomePage.js';
 import Footer from './components/Footer';
-// import AboutPage from './components/AboutPage';
-// import ContactPage from './components/ContactPage';
+import Signup from './components/SignUp';
 
 const App = () => {
   useEffect(() => {
@@ -18,20 +16,24 @@ const App = () => {
     document.head.appendChild(googleMapsScript);
   }, []);
 
+  const location = useLocation(); // Get the current location
+
   return (
-    <Router>
-      <div>
-        <Navbar />
-        {/* <SearchBar /> */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} /> */}
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+      {location.pathname !== '/signup' && <Footer />} {/* Conditionally render the Footer */}
+    </div>
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.css';
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
       <div className={styles.logo}>Travel.</div>
       <nav className={isOpen ? styles.open : ''}>
         <ul>
-          <li>Home</li>
+          <Link to='/'><li>Home</li></Link>
           <li>Packages</li>
           <li>About</li>
           <li>Pages</li>
@@ -21,7 +22,9 @@ const Navbar = () => {
         </ul>
       </nav>
       <div>
-        <button className={styles.signUp}>Sign Up</button>
+        <Link to='signup'>
+          <button className={styles.signUp}>Sign Up</button>
+        </Link>
         <button className={styles.bookNow}>BOOK NOW</button>
       </div>
       
