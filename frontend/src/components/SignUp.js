@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import backimg from '../images/background.jpg';
-import { GiCancel } from "react-icons/gi";
+// import { GiCancel } from "react-icons/gi";
 
 const Signup = () => {
     const [data, setData] = useState({
@@ -106,9 +106,9 @@ const Signup = () => {
                         </div>
                     </div>
                     <div className={styles.cross}>
-                        <Link to='/'>
-                            <GiCancel size={30} />
-                        </Link>
+                        // <Link to='/'>
+                        //     <GiCancel size={30} />
+                        // </Link>
                     </div>
                 </div>
 
