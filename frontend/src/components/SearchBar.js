@@ -5,7 +5,6 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import styles from './SearchBar.module.css';
 
 const useGoogleMapsScript = () => {
   const [loaded, setLoaded] = useState(false);
@@ -82,10 +81,10 @@ const SearchBar = () => {
   }
 
   return (
-    <div className={styles.fullSearch}>
-      <div className={styles.searchBar}>
-        <div className={styles.inputGroup}>
-          <label>From:</label>
+    <div className="flex flex-col shadow-lg w-full rounded-lg bg-white">
+      <div className="flex justify-evenly bg-white py-5 rounded-lg w-[60vw]">
+        <div className="mb-2 w-1/5">
+          <label className="block mb-2 font-bold text-gray-600">From:</label>
           <PlacesAutocomplete
             value={from}
             onChange={setFrom}
@@ -93,11 +92,11 @@ const SearchBar = () => {
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
-                <input {...getInputProps({ placeholder: 'Enter departure location' })} />
-                <div className={styles.autocompleteDropdown}>
+                <input {...getInputProps({ placeholder: 'Enter departure location' })} className="w-full p-2 border border-gray-300 rounded-md bg-white transition duration-300 ease-in-out" />
+                <div className="relative w-full">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {
-                    const className = suggestion.active ? styles.suggestionItemActive : styles.suggestionItem;
+                    const className = suggestion.active ? 'bg-gray-200 p-2' : 'bg-white p-2';
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, { className })}
@@ -111,8 +110,9 @@ const SearchBar = () => {
             )}
           </PlacesAutocomplete>
         </div>
-        <div className={styles.inputGroup}>
-          <label>To:</label>
+
+        <div className="mb-2 w-1/5">
+          <label className="block mb-2 font-bold text-gray-600">To:</label>
           <PlacesAutocomplete
             value={to}
             onChange={setTo}
@@ -120,11 +120,11 @@ const SearchBar = () => {
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
-                <input {...getInputProps({ placeholder: 'Enter destination location' })} />
-                <div className={styles.autocompleteDropdown}>
+                <input {...getInputProps({ placeholder: 'Enter destination location' })} className="w-full p-2 border border-gray-300 rounded-md bg-white transition duration-300 ease-in-out" />
+                <div className="relative w-full">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {
-                    const className = suggestion.active ? styles.suggestionItemActive : styles.suggestionItem;
+                    const className = suggestion.active ? 'bg-gray-200 p-2' : 'bg-white p-2';
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, { className })}
@@ -138,53 +138,62 @@ const SearchBar = () => {
             )}
           </PlacesAutocomplete>
         </div>
-        <div className={styles.inputGroup}>
-          <label>Date:</label>
+
+        <div className="mb-2 w-1/5">
+          <label className="block mb-2 font-bold text-gray-600">Date:</label>
           <DatePicker
             selected={date}
             onChange={(date) => setDate(date)}
             placeholderText="dd/mm/yyyy"
+            className="w-full p-2 border border-gray-300 rounded-md bg-white"
           />
         </div>
-        <div className={styles.inputGroup} ref={dropdownRef}>
-          <label>Car Type:</label>
-          <div className={styles.autocompleteDropdown}>
+
+        <div className="mb-2 w-1/5 relative" ref={dropdownRef}>
+          <label className="block mb-2 font-bold text-gray-600">Car Type:</label>
+          <div className="relative w-full">
             <button
-              className={styles.dropdownButton}
+              className="w-full p-2 border border-gray-300 rounded-md bg-white transition duration-300 ease-in-out"
               onClick={toggleDropdown}
               aria-expanded={showDropdown}
               aria-haspopup="true"
             >
               {selectedCar ? selectedCar : 'Select a car'}
             </button>
-            <div className={`${styles.dropdownList} ${showDropdown ? styles.show : styles.hide}`}>
-              {carOptions.map((car) => (
-                <div
-                  key={car}
-                  className={styles.dropdownItem}
-                  onClick={() => {
-                    setSelectedCar(car);
-                    setShowDropdown(false);
-                  }}
-                >
-                  {car}
-                </div>
-              ))}
-            </div>
+            {showDropdown && (
+              <div className="absolute w-full bg-white border border-gray-300 shadow-md z-10 mt-2">
+                {carOptions.map((car) => (
+                  <div
+                    key={car}
+                    className="p-2 hover:bg-gray-200 cursor-pointer"
+                    onClick={() => {
+                      setSelectedCar(car);
+                      setShowDropdown(false);
+                    }}
+                  >
+                    {car}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
-      <div className={styles.searchBar2}>
-        <div className={styles.estimate}>
-          <button className={styles.estimateButton} onClick={estimate}>
+
+      <div className="flex justify-evenly bg-white py-5 rounded-lg w-full">
+        <div>
+          <button
+            className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition duration-300"
+            onClick={estimate}
+          >
             Estimate
           </button>
         </div>
-        <div className={styles.inputGroup}>
-          <input value={estimatedDistance} placeholder="Estimated Distance" readOnly />
+        <div className="w-1/5">
+          <input value={estimatedDistance} placeholder="Estimated Distance" readOnly className="w-full p-2 border border-gray-300 rounded-md bg-gray-100" />
         </div>
-        <div className={styles.inputGroup}>
-          <input value={estimatedPrice} placeholder="Estimated Price" readOnly />
+        <div className="w-1/5">
+          <input value={estimatedPrice} placeholder="Estimated Price" readOnly className="w-full p-2 border border-gray-300 rounded-md bg-gray-100" />
         </div>
       </div>
     </div>
