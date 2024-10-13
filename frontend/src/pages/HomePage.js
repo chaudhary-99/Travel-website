@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import SearchBar from '../components/SearchBar';
 import backimg from '../images/background.jpg';
-import PopularDestinations from './PopularDestinations';
-import RecommendedPlaces from './RecommendedPlaces';
+import PopularDestinations from '../components/PopularDestinations';
+import RecommendedPlaces from '../components/RecommendedPlaces';
 
 const HomePage = () => {
   return (
