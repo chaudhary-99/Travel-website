@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useEffect } from 'react';
-import PackageCard from './cards/PackageCard';
-import CustomPackageForm from './cards/CustomPackageForm';
-import FixedPkgPopup from './cards/FixedPkgPopup';
+import PackageCard from '../components/cards/PackageCard';
+import CustomPackageForm from '../components/cards/CustomPackageForm';
+import FixedPkgPopup from '../components/cards/FixedPkgPopup';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { FaCarSide, FaCarAlt, FaTruck } from 'react-icons/fa'; 
